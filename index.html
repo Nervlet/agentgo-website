@@ -6,18 +6,19 @@
     <meta name="theme-color" content="#f6f8fb" />
     <meta
       name="description"
-      content="AgentGo，面向 HarmonyOS 手机与折叠屏的 SSH 和 Coding Agent 工作台。连接远程机器，在对话、代码与终端之间继续你的项目。"
+      content="AgentGo，面向 HarmonyOS 手机、折叠屏、平板与二合一设备的 SSH 和 Coding Agent 工作台。连接远程机器，在对话、代码与终端之间继续你的项目。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="AgentGo — 把开发现场，带在身边。" />
     <meta
       property="og:description"
-      content="面向 HarmonyOS 手机与折叠屏的 SSH 和 Coding Agent 工作台。"
+      content="面向 HarmonyOS 手机、折叠屏、平板与二合一设备的 SSH 和 Coding Agent 工作台。"
     />
     <meta property="og:locale" content="zh_CN" />
     <title>AgentGo — 把开发现场，带在身边。</title>
     <link rel="icon" type="image/png" href="./assets/agentgo-mark.png" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./adaptive.css" />
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -33,24 +34,28 @@
           /><span>AgentGo<span class="brand-period">.</span></span></a
         >
         <nav aria-label="主导航" class="desktop-nav">
-          <a href="#workspace">工作台</a><a href="#anywhere">随处继续</a
+          <a href="#workspace">实机界面</a><a href="#anywhere">多屏适配</a
           ><a href="#control">安全与控制</a>
         </nav>
-        <a
-          class="nav-github"
-          href="https://github.com/Nervlet/agentgo-website"
-          target="_blank"
-          rel="noopener noreferrer"
-          >GitHub <span aria-hidden="true">↗</span
-          ><span class="sr-only">（在新标签页打开官网源码）</span></a
-        >
+        <div class="nav-actions">
+          <a class="nav-docs" href="./docs/">使用文档</a>
+          <a
+            class="nav-github"
+            href="https://github.com/Nervlet/agentgo-website"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub <span aria-hidden="true">↗</span
+            ><span class="sr-only">（在新标签页打开官网源码）</span></a
+          >
+        </div>
       </div>
     </header>
     <main id="main">
       <section class="hero container" aria-labelledby="hero-title">
         <div class="hero-eyebrow">
           <span class="eyebrow-line"></span> <span>BUILT FOR HARMONYOS</span>
-          <span class="eyebrow-divider">/</span> <span>手机 · 折叠屏</span>
+          <span class="eyebrow-divider">/</span>
+          <span>手机 · 折叠屏 · 平板 · 二合一</span>
         </div>
         <h1 id="hero-title">把开发现场，<br /><span>带在身边。</span></h1>
         <p class="hero-copy">
@@ -62,290 +67,200 @@
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#workspace"
-            >探索工作台 <span aria-hidden="true">↓</span></a
-          ><a class="button button-quiet" href="#get-agentgo"
-            >了解获取方式 <span aria-hidden="true">↗</span></a
+            >查看实机界面 <span aria-hidden="true">↓</span></a
+          ><a class="button button-quiet" href="./docs/"
+            >阅读使用文档 <span aria-hidden="true">↗</span></a
           >
         </div>
         <div class="hero-footnote">
-          <span>鸿蒙原生体验</span><span>自选模型服务</span
+          <span>鸿蒙多尺寸适配</span><span>自选模型服务</span
           ><span>真实远程环境</span>
         </div>
       </section>
 
       <section
         id="workspace"
-        class="workspace-section container"
-        aria-label="AgentGo 工作台功能演示"
+        class="screenshots-section container"
+        aria-labelledby="screenshots-title"
       >
-        <div class="workspace-intro">
-          <span
-            ><span class="tiny-cross" aria-hidden="true">+</span> YOUR
-            WORKSPACE, WITH YOU.</span
-          ><span class="demo-label"
-            >交互演示 <span aria-hidden="true">↙</span></span
-          >
-        </div>
-        <div class="workbench">
-          <div class="workbench-bar">
-            <div class="workbench-wordmark">
-              <img
-                src="./assets/agentgo-mark.png"
-                width="23"
-                height="23"
-                alt=""
-              /><strong>AgentGo</strong
-              ><span class="workbench-bar-divider"></span><span>工作空间</span>
-            </div>
-            <span class="sample-status"><span></span> 示例连接</span>
+        <div class="screenshots-heading">
+          <div>
+            <p class="eyebrow">ON DEVICE. IN YOUR HANDS.</p>
+            <h2 id="screenshots-title">
+              真实界面，<br
+                class="screenshots-mobile-break"
+              />看得见的鸿蒙体验。
+            </h2>
           </div>
-          <div class="workbench-content">
-            <aside class="demo-sidebar" aria-label="示例项目目录">
-              <div class="sidebar-caption">
-                工作空间 <span aria-hidden="true">＋</span>
-              </div>
-              <div class="machine-name">
-                <span class="machine-symbol" aria-hidden="true">⌘</span>
-                我的开发机
-                <span class="subtle-chevron" aria-hidden="true">⌄</span>
-              </div>
-              <div class="sample-project">
-                <span aria-hidden="true">▱</span> hello-world
-              </div>
-              <div class="sample-session active-session">
-                <span aria-hidden="true">◌</span> 给首页加上深色模式
-              </div>
-              <div class="sample-session">
-                <span aria-hidden="true">◌</span> 整理项目结构
-              </div>
-              <div class="sample-project second-project">
-                <span aria-hidden="true">▱</span> personal-blog
-              </div>
-              <div class="sidebar-bottom">
-                <span aria-hidden="true">✧</span> 全局助手
-                <span class="sidebar-bottom-label">手机端</span>
-              </div>
-            </aside>
-            <div class="demo-main">
-              <div class="demo-toolbar">
-                <div class="project-breadcrumb">
-                  hello-world <span>/</span>
-                  <span class="branch-name">⑂ main</span>
-                </div>
-                <div
-                  class="demo-tabs"
-                  role="tablist"
-                  aria-label="切换工作台示意"
-                >
-                  <button
-                    id="tab-agent"
-                    role="tab"
-                    aria-selected="true"
-                    aria-controls="panel-agent"
-                    tabindex="0"
-                    data-tab="agent"
-                  >
-                    Agent</button
-                  ><button
-                    id="tab-diff"
-                    role="tab"
-                    aria-selected="false"
-                    aria-controls="panel-diff"
-                    tabindex="-1"
-                    data-tab="diff"
-                  >
-                    代码 Diff</button
-                  ><button
-                    id="tab-terminal"
-                    role="tab"
-                    aria-selected="false"
-                    aria-controls="panel-terminal"
-                    tabindex="-1"
-                    data-tab="terminal"
-                  >
-                    终端
-                  </button>
-                </div>
-              </div>
-              <section
-                id="panel-agent"
-                class="demo-panel agent-panel"
-                role="tabpanel"
-                aria-labelledby="tab-agent"
-                tabindex="0"
-              >
-                <div class="user-message">
-                  给首页加上深色模式，跟随系统外观。
-                </div>
-                <div class="agent-answer">
-                  <div class="agent-avatar">
-                    <img
-                      src="./assets/agentgo-mark.png"
-                      width="28"
-                      height="28"
-                      alt=""
-                    />
-                  </div>
-                  <div>
-                    <div class="agent-name">AgentGo <span>项目会话</span></div>
-                    <p>
-                      我会先检查页面样式，再补充深色模式。<br />修改将保持现有布局和交互。
-                    </p>
-                  </div>
-                </div>
-                <div class="tool-trace">
-                  <div>
-                    <span class="trace-check" aria-hidden="true">✓</span
-                    ><span>读取页面与主题配置</span><code>src/styles.css</code>
-                  </div>
-                  <div>
-                    <span class="trace-check" aria-hidden="true">✓</span
-                    ><span>添加系统外观适配</span
-                    ><span class="diff-summary">+ 13 <span>− 2</span></span>
-                  </div>
-                </div>
-                <div class="agent-completion">
-                  <span class="completion-line"></span>
-                  <p>
-                    已补充深色主题样式。<br /><span
-                      >你可以切换到「代码 Diff」查看这次修改。</span
-                    >
-                  </p>
-                  <button
-                    class="inline-action"
-                    type="button"
-                    data-show-tab="diff"
-                  >
-                    查看改动 <span aria-hidden="true">↗</span>
-                  </button>
-                </div>
-                <div class="demo-composer">
-                  <span>继续描述你的想法…</span
-                  ><span class="composer-hint">交互示意</span
-                  ><span class="composer-send" aria-hidden="true">↑</span>
-                </div>
-              </section>
-              <section
-                id="panel-diff"
-                class="demo-panel diff-panel"
-                role="tabpanel"
-                aria-labelledby="tab-diff"
-                tabindex="0"
-                hidden
-              >
-                <div class="code-file-heading">
-                  <span>src/styles.css</span
-                  ><span class="diff-summary">+ 13 <span>− 2</span></span>
-                </div>
-                <div class="code-diff" aria-label="CSS 修改示例">
-                  <div class="code-row">
-                    <span>1</span><code> :root {</code>
-                  </div>
-                  <div class="code-row removed">
-                    <span>2</span><code>− background: #ffffff;</code>
-                  </div>
-                  <div class="code-row removed">
-                    <span>3</span><code>− color: #18202c;</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>2</span><code>+ color-scheme: light dark;</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>3</span><code>+ --surface: #ffffff;</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>4</span><code>+ --text: #18202c;</code>
-                  </div>
-                  <div class="code-row"><span>5</span><code> }</code></div>
-                  <div class="code-row added">
-                    <span>6</span><code>+ body {</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>7</span><code>+ background: var(--surface);</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>8</span><code>+ color: var(--text);</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>9</span><code>+ }</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>10</span
-                    ><code>+ @media (prefers-color-scheme: dark) {</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>11</span><code>+ :root {</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>12</span><code>+ --surface: #10141c;</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>13</span><code>+ --text: #e8edf4;</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>14</span><code>+ }</code>
-                  </div>
-                  <div class="code-row added">
-                    <span>15</span><code>+ }</code>
-                  </div>
-                </div>
-                <div class="panel-bottom-note">
-                  每一处改动，都有迹可循。<span>示例内容，未修改真实文件</span>
-                </div>
-              </section>
-              <section
-                id="panel-terminal"
-                class="demo-panel terminal-panel"
-                role="tabpanel"
-                aria-labelledby="tab-terminal"
-                tabindex="0"
-                hidden
-              >
-                <div class="terminal-heading">
-                  <span>zsh <span>— hello-world</span></span
-                  ><span class="terminal-example">终端输出示意</span>
-                </div>
-                <div class="terminal-output">
-                  <p>
-                    <span class="terminal-path">~/hello-world</span>
-                    <span class="terminal-branch">main</span>
-                  </p>
-                  <p><span class="terminal-prompt">❯</span> git diff --stat</p>
-                  <p class="terminal-muted">
-                    src/styles.css | 15 +++++++++++++--
-                  </p>
-                  <p class="terminal-muted">
-                    1 file changed, 13 insertions(+), 2 deletions(-)
-                  </p>
-                  <p class="terminal-gap">
-                    <span class="terminal-prompt">❯</span> npm run build
-                  </p>
-                  <p class="terminal-muted">
-                    &gt; hello-world@1.0.0 build<br />&gt; vite build
-                  </p>
-                  <p class="terminal-success">✓ built successfully</p>
-                  <p class="terminal-gap">
-                    <span class="terminal-prompt">❯</span>
-                    <span class="terminal-caret" aria-hidden="true"></span>
-                  </p>
-                </div>
-                <div class="terminal-footer">
-                  需要亲手操作时，终端就在旁边。<span>此演示不执行命令</span>
-                </div>
-              </section>
-            </div>
-          </div>
+          <span class="capture-badge">开发版本 · 实机截图</span>
         </div>
-        <div class="workspace-caption">
-          <span>从一个想法，到一次改动。</span>
+        <div class="real-device-gallery">
+          <figure class="capture-portrait">
+            <a
+              href="./assets/screenshots/narrow-model-services.jpeg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="查看窄屏模型服务页实机原图（新标签页）"
+              ><img
+                src="./assets/screenshots/narrow-model-services.jpeg"
+                width="1264"
+                height="1848"
+                alt="AgentGo 折叠屏折起后的实机界面：模型服务页按单列显示服务列表。"
+                fetchpriority="high"
+            /></a>
+            <figcaption>
+              <strong>窄屏，聚焦当前页面。</strong
+              ><span>模型服务 · 单列浏览</span>
+            </figcaption>
+          </figure>
+          <figure class="capture-wide">
+            <a
+              href="./assets/screenshots/unfolded-settings.jpeg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="查看折叠屏展开设置页实机原图（新标签页）"
+              ><img
+                src="./assets/screenshots/unfolded-settings.jpeg"
+                width="2584"
+                height="1828"
+                alt="AgentGo 折叠屏展开后的实机界面：左侧保留设置导航，右侧显示插件配置。"
+            /></a>
+            <figcaption>
+              <strong>展开，导航与配置并排。</strong
+              ><span>设置与插件 · 左侧导航 / 右侧内容</span>
+            </figcaption>
+          </figure>
+        </div>
+        <p class="capture-note">
+          以上为折叠屏在窄屏与展开状态下的真实开发版本画面，点击可查看原图。实际外观随版本、主题及设备而变化。
+        </p>
+      </section>
+
+      <section
+        id="anywhere"
+        class="adaptive-section container"
+        aria-labelledby="adaptive-title"
+      >
+        <div class="adaptive-heading">
+          <div>
+            <p class="eyebrow">HARMONYOS. EVERY SIZE.</p>
+            <h2 id="adaptive-title">一套工作台，<br />适应每一块鸿蒙屏幕。</h2>
+          </div>
           <p>
-            切换 Agent / 代码 Diff / 终端体验工作流。界面为功能示意，非 App
-            截图，不连接真实服务。
+            从掌心的小屏，到展开的大屏。<br />让导航、对话与工具，找到各自合适的位置。
           </p>
         </div>
+        <div
+          class="form-factor-selector"
+          role="group"
+          aria-label="选择设备形态，查看布局示意"
+        >
+          <button
+            type="button"
+            data-layout="phone"
+            aria-pressed="false"
+            aria-controls="adaptive-preview"
+          >
+            <strong>手机</strong><span>窄屏 · 专注当前内容</span>
+          </button>
+          <button
+            type="button"
+            data-layout="fold"
+            aria-pressed="true"
+            aria-controls="adaptive-preview"
+          >
+            <strong>折叠屏</strong><span>展开 · 对话工具并排</span>
+          </button>
+          <button
+            type="button"
+            data-layout="tablet"
+            aria-pressed="false"
+            aria-controls="adaptive-preview"
+          >
+            <strong>平板</strong><span>大屏 · 项目一目了然</span>
+          </button>
+          <button
+            type="button"
+            data-layout="window"
+            aria-pressed="false"
+            aria-controls="adaptive-preview"
+          >
+            <strong>二合一</strong><span>窗口 · 随可用宽度调整</span>
+          </button>
+        </div>
+        <div class="adaptive-stage" id="adaptive-preview" data-layout="fold">
+          <div class="adaptive-stage-meta">
+            <span>布局示意 · 非实机截图</span
+            ><span id="adaptive-mode-label">折叠屏展开</span>
+          </div>
+          <div
+            class="layout-diagram"
+            aria-label="折叠屏布局示意：对话与工具左右并排"
+          >
+            <div class="layout-diagram-bar">
+              <span>AgentGo / 同一个项目</span
+              ><span class="layout-mode-tag">展开</span>
+            </div>
+            <div class="layout-diagram-body">
+              <div class="layout-navigation">
+                <span class="layout-area-label">项目导航</span><span>机器</span
+                ><span class="layout-nav-project">项目</span
+                ><span class="layout-nav-session">当前会话</span>
+              </div>
+              <div class="layout-conversation">
+                <span class="layout-area-label">当前会话</span
+                ><strong>继续手中的项目</strong>
+                <p>描述任务<br />查看执行过程<br />保留当前上下文</p>
+                <span class="layout-content-label">对话</span>
+              </div>
+              <div class="layout-tools">
+                <span class="layout-area-label">工具区域</span
+                ><strong>查看代码与终端</strong>
+                <p>文件与 Diff<br />Git 历史<br />交互式终端</p>
+                <span class="layout-content-label">工具</span>
+              </div>
+            </div>
+            <div class="layout-narrow-path">
+              项目 <span aria-hidden="true">→</span> 会话
+              <span aria-hidden="true">↔</span> 工具
+            </div>
+          </div>
+        </div>
+        <div class="adaptive-explanation" aria-live="polite" aria-atomic="true">
+          <strong id="adaptive-mode-title">展开后，对话与工具并排。</strong>
+          <p id="adaptive-mode-description">
+            可用空间足够时，一边跟进 Agent，一边检查文件、Diff
+            或终端；折起后回到单页浏览。
+          </p>
+        </div>
+        <div class="adaptive-principles">
+          <div>
+            <span>01</span>
+            <h3>看窗口，不看型号</h3>
+            <p>依据当前可用宽度调整布局，兼顾横竖屏和分屏窗口。</p>
+          </div>
+          <div>
+            <span>02</span>
+            <h3>换形态，接着做</h3>
+            <p>展开与折起延续当前会话、表单和 SSH 连接，不隐式进入全屏。</p>
+          </div>
+          <div>
+            <span>03</span>
+            <h3>大屏，多一份从容</h3>
+            <p>空间充足时保留项目导航，把更多位置留给对话和工作内容。</p>
+          </div>
+        </div>
+        <p class="adaptive-boundary">
+          以上展示布局逻辑。应用声明支持
+          phone、tablet、2in1，具体设备与系统版本的安装要求以发行说明为准。<a
+            href="./docs/#devices"
+            >查看设备与窗口使用说明 <span aria-hidden="true">↗</span></a
+          >
+        </p>
         <noscript
           ><p class="noscript-note">
-            工作台切换演示需要 JavaScript；下方仍可阅读全部产品介绍。
+            当前展示折叠屏布局示意；切换形态需要
+            JavaScript。各形态的使用说明可在文档中阅读。
           </p></noscript
         >
       </section>
@@ -391,63 +306,32 @@
         </div>
       </section>
 
-      <section
-        id="anywhere"
-        class="anywhere-section"
-        aria-labelledby="anywhere-title"
-      >
-        <div class="container anywhere-layout">
-          <div class="anywhere-copy">
-            <p class="eyebrow">SMALL SCREEN. REAL WORK.</p>
-            <h2 id="anywhere-title">屏幕有大小。<br />工作，不必断开。</h2>
-            <p>
-              在手机上专注当前任务，展开折叠屏，就有更宽的工作空间。布局随可用宽度调整，当前会话、表单与
-              SSH 连接保持延续。
-            </p>
-            <div class="anywhere-detail">
-              <span aria-hidden="true">↔</span>
-              <div>
-                <strong>为展开，也为折起。</strong>
-                <p>
-                  宽屏左右分栏，窄屏逐级进入。<br />从查看进展到检查细节，自然切换。
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="continuity-panel">
-            <div class="continuity-top">
-              <span>工作始终有序</span><span aria-hidden="true">⌘</span>
-            </div>
-            <div class="hierarchy-row">
-              <span class="hierarchy-index">01</span>
-              <div>
-                <h3>机器</h3>
-                <p>连接你的远程环境</p>
-              </div>
-              <span class="hierarchy-example">我的开发机</span>
-            </div>
-            <div class="hierarchy-row">
-              <span class="hierarchy-index">02</span>
-              <div>
-                <h3>项目</h3>
-                <p>一台机器，一个目录</p>
-              </div>
-              <span class="hierarchy-example">hello-world</span>
-            </div>
-            <div class="hierarchy-row">
-              <span class="hierarchy-index">03</span>
-              <div>
-                <h3>会话</h3>
-                <p>每项工作，都有上下文</p>
-              </div>
-              <span class="hierarchy-example">深色模式</span>
-            </div>
-            <div class="continuity-bottom">
-              <span>置顶常用会话</span><span>归档与恢复</span
-              ><span>继续手中的工作</span>
-            </div>
-          </div>
+      <section class="guide-callout container" aria-labelledby="guide-title">
+        <div>
+          <p class="eyebrow">START WITH THE DOCS.</p>
+          <h2 id="guide-title">从第一次连接，<br />到继续你的项目。</h2>
+          <p>
+            准备 SSH
+            机器、配置模型、建立项目会话。按步骤开始，也可以直接查找你需要的操作。
+          </p>
+          <a class="button button-primary" href="./docs/"
+            >阅读使用文档 <span aria-hidden="true">↗</span></a
+          >
         </div>
+        <nav class="guide-links" aria-label="常用使用文档">
+          <a href="./docs/#ssh">连接 SSH <span aria-hidden="true">↗</span></a
+          ><a href="./docs/#models"
+            >配置模型服务 <span aria-hidden="true">↗</span></a
+          ><a href="./docs/#project"
+            >开始项目会话 <span aria-hidden="true">↗</span></a
+          ><a href="./docs/#workspace"
+            >使用代码与终端 <span aria-hidden="true">↗</span></a
+          ><a href="./docs/#devices"
+            >设备与窗口适配 <span aria-hidden="true">↗</span></a
+          ><a href="./docs/#faq"
+            >排查常见问题 <span aria-hidden="true">↗</span></a
+          >
+        </nav>
       </section>
 
       <section
@@ -506,9 +390,11 @@
               AgentGo 支持哪些设备？<span aria-hidden="true">+</span>
             </summary>
             <p>
-              AgentGo 面向 HarmonyOS 手机与折叠屏开发。当前工程目标为 HarmonyOS
-              6.1，最低 API 12；具体安装要求以未来公开发行说明为准。远程 Agent
-              运行包目前支持 macOS ARM64 和 Linux x64。
+              AgentGo 声明支持 HarmonyOS
+              手机、平板和二合一设备，并针对折叠屏与不同窗口宽度调整布局。当前工程目标为
+              HarmonyOS 6.1，最低 API
+              12；具体安装要求以未来公开发行说明为准。远程 Agent 运行包目前支持
+              macOS ARM64 和 Linux x64。
             </p>
           </details>
           <details>
@@ -580,6 +466,7 @@
         >
         <p>你的开发现场，随你同行。</p>
         <div class="footer-links">
+          <a href="./docs/">使用文档</a>
           <a
             href="https://github.com/Nervlet/agentgo-website"
             target="_blank"

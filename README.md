@@ -1,8 +1,8 @@
 # AgentGo 官网
 
-AgentGo 面向 HarmonyOS 手机与折叠屏，是集 SSH、Coding Agent 和代码查看于一体的工作台。此仓库维护其中文产品官网。
+AgentGo 面向 HarmonyOS 手机、折叠屏、平板与二合一设备，是集 SSH、Coding Agent 和代码查看于一体的工作台。此仓库维护其中文产品官网。
 
-官网使用原生 HTML、CSS 和 JavaScript，无运行时依赖、无后端、无用户数据收集。所有资源随站点提供，不加载第三方字体或分析脚本。产品工作台为可交互的功能示意，使用虚构数据，不连接 SSH、模型或凭据服务。
+官网使用原生 HTML、CSS 和 JavaScript，无运行时依赖、无后端、无用户数据收集。所有资源随站点提供，不加载第三方字体或分析脚本。首页使用已有的折叠屏窄屏与展开实机开发截图；四种形态切换仅展示布局示意，不代表平板或二合一已完成实机验收。页面不连接 SSH、模型或凭据服务。使用文档位于 `docs/`，覆盖从连接准备到日常使用与问题排查。
 
 ## 本地开发
 
@@ -31,12 +31,15 @@ GitHub Pages 通过 `.github/workflows/pages.yml` 从 `main` 自动构建和部�
 
 ## 内容维护
 
-- `index.html`：中文文案、导航、工作台示意与 FAQ。
+- `index.html`：中文文案、导航、实机画面、多设备说明与 FAQ。
 - `styles.css`：品牌配色、响应式布局、可访问性与动效偏好。
-- `app.js`：演示标签切换，支持方向键、Home / End 和键盘焦点。
+- `adaptive.css`：多设备适配展示与实机截图布局。
+- `app.js`：手机、折叠屏、平板与二合一布局示意切换。
+- `docs/index.html`、`docs/docs.css`：面向使用者的指南与响应式目录。
+- `assets/screenshots/`：经过内容检查的真实开发版本截图。
 - `assets/agentgo-mark.png`：现有 AgentGo 品牌图标。
 
-公开下载链接尚未配置，发布后更新 `#get-agentgo`。不要把官网示意当作 App 截图，不要将官网开源描述为应用本体开源。正式域名确定后再补充 canonical 和站点地图。
+公开下载链接尚未配置，发布后更新 `#get-agentgo`。实机截图与布局示意需保持明确标识，不要把布局示意当作 App 截图，不要将官网开源描述为应用本体开源。正式域名确定后再补充 canonical 和站点地图。
 
 ## 许可
 

@@ -10,9 +10,19 @@ const types = {
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".png": "image/png",
+  ".jpeg": "image/jpeg",
+  ".jpg": "image/jpeg",
   ".svg": "image/svg+xml",
 };
-const publicFiles = new Set(["index.html", "styles.css", "app.js"]);
+const publicFiles = new Set([
+  "index.html",
+  "styles.css",
+  "adaptive.css",
+  "app.js",
+  "docs/index.html",
+  "docs/docs.css",
+  "docs/docs.js",
+]);
 
 http
   .createServer(async (request, response) => {
@@ -20,7 +30,13 @@ http
       const pathname = decodeURIComponent(
         new URL(request.url, "http://localhost").pathname,
       );
-      const relative = pathname === "/" ? "index.html" : pathname.slice(1);
+      if (pathname === "/docs") {
+        response.writeHead(308, { Location: "/docs/" }).end();
+        return;
+      }
+      const relative = pathname.endsWith("/")
+        ? pathname.slice(1) + "index.html"
+        : pathname.slice(1);
       const filename = path.resolve(root, relative);
       const normalized = path.relative(root, filename);
       if (

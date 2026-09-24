@@ -6,7 +6,14 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const output = path.join(root, "dist");
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
-for (const file of ["index.html", "styles.css", "app.js", "assets"]) {
+for (const file of [
+  "index.html",
+  "styles.css",
+  "adaptive.css",
+  "app.js",
+  "assets",
+  "docs",
+]) {
   await cp(path.join(root, file), path.join(output, file), { recursive: true });
 }
 await writeFile(path.join(output, ".nojekyll"), "");

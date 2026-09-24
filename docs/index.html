@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f8fb" />
+    <meta
+      name="description"
+      content="AgentGo 使用指南：在鸿蒙设备上配置 SSH、模型服务与 Codex 授权，开始远程项目会话，查看文件、Diff、Git 历史和终端。"
+    />
+    <title>使用文档 · AgentGo</title>
+    <link rel="icon" type="image/png" href="../assets/agentgo-mark.png" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="./docs.css" />
+  </head>
+  <body class="docs-body">
+    <a class="skip-link" href="#main">跳至文档正文</a>
+    <header class="docs-header">
+      <div class="docs-container docs-header-inner">
+        <a class="brand" href="../" aria-label="AgentGo 官网首页"
+          ><img
+            src="../assets/agentgo-mark.png"
+            alt=""
+            width="36"
+            height="36"
+          /><span>AgentGo<span class="brand-period">.</span></span></a
+        >
+        <nav class="docs-header-nav" aria-label="主导航">
+          <a href="../">返回官网</a>
+          <a href="./" aria-current="page">使用文档</a>
+          <a
+            href="https://github.com/Nervlet/agentgo-website"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub <span aria-hidden="true">↗</span
+            ><span class="sr-only">（官网源码，在新标签页打开）</span></a
+          >
+        </nav>
+      </div>
+    </header>
+    <div class="docs-container docs-layout">
+      <aside class="docs-sidebar" aria-label="文档目录">
+        <div class="docs-sidebar-label">AGENTGO DOCS</div>
+        <nav class="docs-desktop-toc" aria-label="本页章节">
+          <a href="#start">开始之前</a><a href="#ssh">连接远程机器</a
+          ><a href="#models">配置模型服务</a><a href="#project">开始项目会话</a
+          ><a href="#workspace">文件、Diff 与终端</a
+          ><a href="#global">使用全局助手</a
+          ><a href="#devices">屏幕与窗口适配</a
+          ><a href="#history">归档、恢复与删除</a
+          ><a href="#security">凭据与执行边界</a><a href="#faq">常见问题</a>
+        </nav>
+        <details class="docs-mobile-toc">
+          <summary>本页目录 <span aria-hidden="true">＋</span></summary>
+          <nav aria-label="本页章节（移动版）">
+            <a href="#start">开始之前</a><a href="#ssh">连接远程机器</a
+            ><a href="#models">配置模型服务</a
+            ><a href="#project">开始项目会话</a
+            ><a href="#workspace">文件、Diff 与终端</a
+            ><a href="#global">使用全局助手</a
+            ><a href="#devices">屏幕与窗口适配</a
+            ><a href="#history">归档、恢复与删除</a
+            ><a href="#security">凭据与执行边界</a><a href="#faq">常见问题</a>
+          </nav>
+        </details>
+        <p class="docs-sidebar-note">从第一次连接，<br />到继续你的项目。</p>
+      </aside>
+      <main id="main" class="docs-content" tabindex="-1">
+        <div class="docs-intro">
+          <p class="docs-eyebrow">使用指南</p>
+          <h1>AgentGo 使用文档</h1>
+          <p class="docs-lead">
+            配置自己的机器与模型服务，在鸿蒙设备上开始对话、检查改动，或打开一个真正的远程终端。
+          </p>
+          <p class="docs-updated">
+            更新于 2026 年 9 月 24 日 · 对应当前应用功能
+          </p>
+        </div>
+
+        <section id="start" class="docs-section" aria-labelledby="start-title">
+          <p class="docs-section-number">01 / GET STARTED</p>
+          <h2 id="start-title">开始之前</h2>
+          <div class="docs-note">
+            <strong>获取应用</strong>
+            <p>
+              当前官网尚未提供公开下载入口。后续获取方式会在<a
+                href="../#get-agentgo"
+                >官网获取区域</a
+              >更新。本指南用于了解配置流程，也适用于已经获得安装包的用户。
+            </p>
+          </div>
+          <p>
+            AgentGo 面向 HarmonyOS
+            手机、折叠屏、平板与二合一设备设计。你可以从以下两条路径开始：
+          </p>
+          <div class="docs-choice-grid">
+            <a class="docs-choice" href="#global"
+              ><span>先试一次对话</span
+              ><strong>手机全局助手 <span aria-hidden="true">→</span></strong>
+              <p>
+                配置手机可用的模型服务，选择“手机”开始。不需要先创建 SSH 项目。
+              </p></a
+            >
+            <a class="docs-choice" href="#ssh"
+              ><span>继续远程开发</span
+              ><strong>SSH 项目会话 <span aria-hidden="true">→</span></strong>
+              <p>
+                准备一台可通过 SSH 访问的机器、远程项目目录和可用的模型服务。
+              </p></a
+            >
+          </div>
+          <h3>项目会话需要准备什么</h3>
+          <ul>
+            <li>远程机器的主机地址、SSH 端口、用户名，以及密码或私钥。</li>
+            <li>你有读写权限的远程项目目录。Agent 会在这个目录执行工作。</li>
+            <li>模型服务的 API Key，或可用于 Codex 的 ChatGPT 账号。</li>
+          </ul>
+          <p>
+            当前随应用提供的远程 Agent 运行包支持
+            <strong>macOS ARM64 和 Linux x64</strong>。首次使用会通过 SSH
+            准备远程运行组件，等待界面完成连接与初始化后再发送任务；远端无需自行执行
+            npm 安装。
+          </p>
+        </section>
+
+        <section id="ssh" class="docs-section" aria-labelledby="ssh-title">
+          <p class="docs-section-number">02 / CONNECTION</p>
+          <h2 id="ssh-title">连接远程机器</h2>
+          <ol class="docs-steps">
+            <li>
+              <strong>打开“设置 → SSH 连接”。</strong>
+              <p>
+                添加连接，填写“名称”“主机地址”“用户名”和“端口”。端口应与远端 SSH
+                服务保持一致。
+              </p>
+            </li>
+            <li>
+              <strong>选择“SSH 密钥”或“密码”。</strong>
+              <p>
+                在“登录凭据”中选择已保存的凭据，也可以保留“每次连接时输入”。通过“管理凭据”进入“密钥与密码”，管理可复用的登录凭据。
+              </p>
+            </li>
+            <li>
+              <strong>点击“保存连接”，再“连接并打开终端”。</strong>
+              <p>
+                保存只记录配置。打开终端并成功登录，才表示当前网络和凭据可以连接到这台机器。
+              </p>
+            </li>
+            <li>
+              <strong>核对主机指纹。</strong>
+              <p>
+                首次连接会显示主机指纹。通过可信渠道与机器管理员核对后，点击“信任此指纹并继续”。主机指纹变化时同样需要核对，再决定是否继续。
+              </p>
+            </li>
+          </ol>
+          <p>
+            支持 OpenSSH / PEM
+            私钥，以及加密私钥的口令。若在应用中生成新密钥，仍需将公钥配置到对应远程账户，生成密钥本身不会让服务器自动接受它。
+          </p>
+          <div class="docs-note">
+            <strong>连接失败时</strong>
+            <p>
+              先核对主机地址、端口、用户名、网络可达性与 SSH
+              服务状态；再检查认证方式。主机指纹不一致时，先确认远程机器是否重装或更换过密钥。
+            </p>
+          </div>
+        </section>
+
+        <section
+          id="models"
+          class="docs-section"
+          aria-labelledby="models-title"
+        >
+          <p class="docs-section-number">03 / MODEL SERVICES</p>
+          <h2 id="models-title">配置模型服务</h2>
+          <p>
+            打开<strong>“设置 → 模型服务”</strong>。这里集中管理 API Key 与
+            ChatGPT
+            账号授权，配置后可在会话中选择对应模型。可用模型和额度取决于你的服务账号；手机可使用的服务还受本地运行时支持范围限制。
+          </p>
+          <h3>使用 API Key</h3>
+          <ol>
+            <li>
+              选择你实际使用的服务商，按页面提示填写“API Key /
+              Token”。不同套餐可能对应不同入口，请按服务商说明选择。
+            </li>
+            <li>
+              按需填写“服务地址”及该服务要求的其他配置。通常保留默认地址；更换服务地址或连接配置时，需要重新填写
+              Key。
+            </li>
+            <li>点击“保存配置”，回到会话选择该服务与模型。</li>
+          </ol>
+          <p>
+            支持模型列表验证的服务会显示<strong>“验证连接”</strong>。先连接 SSH
+            机器、保存修改，再核对页面中的“验证目标”后验证。验证只读取模型列表；实际推理权限、额度与可用性要以会话运行结果为准。不提供列表验证的服务仍可保存并使用。
+          </p>
+          <h3>使用 OpenAI Codex</h3>
+          <ol>
+            <li>
+              在“模型服务”中打开<strong>“OpenAI Codex”</strong>，点击<strong
+                >“登录 ChatGPT”</strong
+              >。
+            </li>
+            <li>
+              复制验证码，点击<strong>“打开官方授权页”</strong>。在官方页面登录并输入验证码，完成后返回
+              AgentGo 等待状态更新。
+            </li>
+            <li>
+              登录成功后，手机全局会话默认可用。若用于远程项目，在<strong>“使用范围”</strong>勾选对应
+              SSH 机器，再点击<strong>“保存使用范围”</strong>。
+            </li>
+          </ol>
+          <div class="docs-note">
+            <strong>每台远程机器分别授权</strong>
+            <p>
+              新添加的 SSH 机器不会自动获得 Codex 授权。看到“此机器尚未获得
+              Codex
+              授权”时，请返回使用范围，检查并保存选择。远端接收短期凭据，授权刷新由手机管理。
+            </p>
+          </div>
+        </section>
+
+        <section
+          id="project"
+          class="docs-section"
+          aria-labelledby="project-title"
+        >
+          <p class="docs-section-number">04 / YOUR PROJECT</p>
+          <h2 id="project-title">开始项目会话</h2>
+          <p>
+            一个项目绑定<strong>一台 SSH 机器的一个远程目录</strong
+            >。侧栏按“机器 → 项目 → 会话”组织，同一项目下可以创建多个会话。
+          </p>
+          <ol class="docs-steps">
+            <li>
+              <strong>选择执行机器。</strong>
+              <p>新建会话，在输入区的机器选择入口选择已经配置的 SSH 机器。</p>
+            </li>
+            <li>
+              <strong>选择或新建 Project。</strong>
+              <p>
+                打开输入区上方的“Project”菜单，选择已有项目；创建项目时填写“项目名称”，选择“SSH
+                连接”，点击“工作目录”中的“选择远端文件夹”。
+              </p>
+            </li>
+            <li>
+              <strong>确认远程工作目录。</strong>
+              <p>
+                浏览到目标文件夹，点击“使用此目录”，再点击“保存项目”。所有新会话都会沿用这个目录。要改用另一台机器或另一个目录，请新建项目。
+              </p>
+            </li>
+            <li>
+              <strong>选择模型，发送第一个任务。</strong>
+              <p>
+                确认机器、项目目录与模型后，可以先发送“说明这个项目的目录结构和主要入口”。查看回复与工具过程，再继续具体任务。
+              </p>
+            </li>
+          </ol>
+          <h3>切换 Git 分支</h3>
+          <p>
+            工作目录是 Git
+            仓库时，可在会话草稿阶段通过分支选择入口切换。应用会检查未提交修改和运行中的任务。<strong>分支属于远程项目目录，同一目录的会话共用它</strong>，新建会话不会自动创建独立工作区。
+          </p>
+          <p>
+            未发送的草稿不会占用侧栏。需要继续已有工作时，直接打开原来的会话；项目会话也提供分叉、上下文压缩、文件上传、图片输入、Skills
+            与快捷命令。
+          </p>
+        </section>
+
+        <section
+          id="workspace"
+          class="docs-section"
+          aria-labelledby="workspace-title"
+        >
+          <p class="docs-section-number">05 / WORKSPACE</p>
+          <h2 id="workspace-title">文件、Diff 与终端</h2>
+          <p>
+            在项目会话中打开工具区，查看的内容来自真实远程机器。宽屏可以同时保留对话与工具，窄屏则集中显示当前工具，使用返回入口回到对话。
+          </p>
+          <dl class="docs-feature-list">
+            <div>
+              <dt>文件</dt>
+              <dd>
+                浏览远程目录并打开文件查看内容。可按需显示隐藏文件，使用路径导航返回上级目录。
+              </dd>
+            </div>
+            <div>
+              <dt>Diff</dt>
+              <dd>
+                查看文件改动；对话中的工具过程也可呈现文件差异。完成修改后先检查差异，再决定下一步。
+              </dd>
+            </div>
+            <div>
+              <dt>Git</dt>
+              <dd>
+                查看工作目录的 Git
+                状态和提交历史，打开提交查看涉及的文件与改动。非 Git
+                目录不会有对应的仓库历史。
+              </dd>
+            </div>
+            <div>
+              <dt>终端</dt>
+              <dd>
+                通过“新建终端”打开真实交互式 SSH
+                终端，可使用多个终端标签和快捷键。命令以你的远程账户身份执行。
+              </dd>
+            </div>
+          </dl>
+          <div class="docs-note">
+            <strong>终端与 Agent 任务的连接方式不同</strong>
+            <p>
+              关闭已连接的终端会断开它的 SSH
+              连接，远程命令可能中断；终端输出只保留在内存，应用进程退出后需要重新连接。远程
+              Agent 任务可在手机连接断开后继续执行。
+            </p>
+          </div>
+        </section>
+
+        <section
+          id="global"
+          class="docs-section"
+          aria-labelledby="global-title"
+        >
+          <p class="docs-section-number">06 / GLOBAL ASSISTANT</p>
+          <h2 id="global-title">使用全局助手</h2>
+          <p>
+            配置模型后，新建会话并选择<strong>“手机”</strong>。全局会话不绑定
+            SSH 项目，入口和历史位于侧栏的全局会话区域。
+          </p>
+          <p>
+            全局助手在手机运行，可以通过应用工具管理项目与会话、执行远程命令，或把开发任务委派给项目会话。需要修改具体项目时，确认目标机器和目录，再让对应项目会话处理。
+          </p>
+          <div
+            class="docs-table-scroll"
+            role="region"
+            aria-label="全局助手与项目会话对照"
+            tabindex="0"
+          >
+            <table>
+              <caption>
+                根据任务选择会话
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">场景</th>
+                  <th scope="col">全局助手</th>
+                  <th scope="col">项目会话</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">执行位置</th>
+                  <td>手机</td>
+                  <td>远程 SSH 机器</td>
+                </tr>
+                <tr>
+                  <th scope="row">项目绑定</th>
+                  <td>不绑定固定项目</td>
+                  <td>一台机器、一个目录</td>
+                </tr>
+                <tr>
+                  <th scope="row">适合的工作</th>
+                  <td>日常对话、管理应用、协调远程任务</td>
+                  <td>围绕代码与目录持续开发</td>
+                </tr>
+                <tr>
+                  <th scope="row">附件、远程 Skills、压缩与分叉</th>
+                  <td>当前不提供这些入口</td>
+                  <td>提供</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            手机全局任务使用系统提供的短时后台执行额度。回到前台或重新启动后，会尝试恢复未完成任务；对于执行结果不明确的修改，会暂停并提示核对。你主动停止或归档的任务不会自动恢复。
+          </p>
+        </section>
+
+        <section
+          id="devices"
+          class="docs-section"
+          aria-labelledby="devices-title"
+        >
+          <p class="docs-section-number">07 / ADAPTIVE LAYOUT</p>
+          <h2 id="devices-title">屏幕与窗口适配</h2>
+          <p>
+            AgentGo
+            根据<strong>当前窗口的可用宽度</strong>调整布局。手机、折叠展开、横屏和系统分屏窗口中，内容的组织方式会随空间变化。
+          </p>
+          <dl class="docs-feature-list">
+            <div>
+              <dt>手机与折起状态</dt>
+              <dd>
+                以单页阅读和逐级进入为主。在项目、对话、工具或设置详情之间切换，用返回回到上一层。
+              </dd>
+            </div>
+            <div>
+              <dt>折叠展开与宽窗口</dt>
+              <dd>
+                宽度足够时使用左右分栏，结合导航、对话和工具内容。在设置中，左侧切换类别，右侧编辑对应配置。
+              </dd>
+            </div>
+            <div>
+              <dt>平板与二合一设备</dt>
+              <dd>
+                可用宽度足够时，项目导航、对话与工具可以同时显示。缩小窗口后回到紧凑布局，无需以设备型号选择布局。
+              </dd>
+            </div>
+            <div>
+              <dt>横屏与系统分屏</dt>
+              <dd>
+                按实际分配给应用的空间重新布局。设备屏幕很宽、但应用窗口较窄时，仍会使用紧凑布局。
+              </dd>
+            </div>
+            <div>
+              <dt>中途折叠或调整窗口</dt>
+              <dd>
+                布局切换保留当前会话、编辑状态和 SSH
+                连接，不会因折叠动作自动开启全屏。
+              </dd>
+            </div>
+          </dl>
+          <p>
+            需要调整阅读体验时，打开<strong>“设置 → App 外观”</strong
+            >，设置主题、界面字号、终端字体与字号。当前应用声明支持手机、平板与二合一设备；官网提供的实机画面来自折叠屏，不代表每种形态与设备都已完成实机验收。安装要求以发行说明为准。
+          </p>
+        </section>
+
+        <section
+          id="history"
+          class="docs-section"
+          aria-labelledby="history-title"
+        >
+          <p class="docs-section-number">08 / HISTORY</p>
+          <h2 id="history-title">归档、恢复与删除</h2>
+          <h3>把完成的工作收起来</h3>
+          <p>
+            在侧栏左滑会话，可归档、置顶或取消置顶。归档将记录移入归档列表，并不等于删除项目代码。侧栏底部、设置旁边的<strong>“归档”</strong>入口可以按机器和项目查找历史。
+          </p>
+          <h3>恢复会话</h3>
+          <p>
+            在归档页找到目标会话并恢复，记录会重新出现在列表中。如果所属项目也已归档，先恢复项目，再恢复其中的会话。
+          </p>
+          <h3>彻底删除前，确认实际影响</h3>
+          <ul>
+            <li>
+              <strong>远程项目会话：</strong>同时删除手机记录和对应远程 Pi
+              会话，无法恢复；项目代码文件保留。远程机器不可用时，不会先移除手机记录。
+            </li>
+            <li>
+              <strong>手机全局会话：</strong>删除手机上的聊天记录和 Agent
+              上下文，无法恢复。
+            </li>
+            <li>
+              <strong>移除 SSH 连接：</strong
+              >断开该机器的手机连接，关联项目、会话、草稿和终端标签保留，并标记“连接已移除”；密钥、密码和远程文件保留。已启动的远端
+              Agent 任务可能继续执行。
+            </li>
+          </ul>
+          <p>
+            管理已归档的项目或会话时，可见“清理本地历史”；它与归档页的“彻底删除”含义不同。清理本地历史只处理手机记录及其使用的终端，不删除远程文件。操作前阅读当前确认界面，按实际影响选择。
+          </p>
+        </section>
+
+        <section
+          id="security"
+          class="docs-section"
+          aria-labelledby="security-title"
+        >
+          <p class="docs-section-number">09 / CREDENTIALS &amp; CONTROL</p>
+          <h2 id="security-title">凭据与执行边界</h2>
+          <h3>凭据保存在手机</h3>
+          <p>
+            SSH 凭据和模型授权经 HUKS 加密保存。系统身份验证可在 5
+            分钟内复用；离开 App 超过 30
+            秒会锁定凭据，但不会主动断开已有连接。卸载或清除应用数据会丢失本机凭据。
+          </p>
+          <p>
+            在远程项目中，模型凭据经 SSH 交给远程运行环境。Codex
+            仅向获准机器提供短期访问凭据；远端不负责刷新登录授权。
+          </p>
+          <h3>确认账户权限和任务范围</h3>
+          <p>
+            项目 Agent 的文件和命令工具使用远程 SSH
+            账户的权限直接执行，<strong>当前没有逐次工具操作审批</strong>。发送任务前确认机器、工作目录、可访问的数据和指令范围；需要限制权限时，应使用相应的远程账户与系统权限配置。
+          </p>
+          <p>
+            清除模型本机配置、退出 ChatGPT
+            登录或断开手机连接，都不等于终止已经开始的远程任务。需要结束任务时，在会话中执行停止并核对状态。
+          </p>
+          <h3>当前尚不提供</h3>
+          <p>
+            私钥导出、凭据云同步、SSH Agent
+            转发、跳板机与端口转发。请自行保管原始私钥；不要将清除应用数据作为修复连接问题的第一步。
+          </p>
+          <h3>统一指令与代理</h3>
+          <p>
+            在<strong>“设置 → 机器指令”</strong>中，可编辑手机或 SSH
+            机器的通用指令；项目目录中的
+            <code>AGENTS.md</code> 也会用于项目会话。在<strong
+              >“设置 → 插件”</strong
+            >中按需配置网络代理，其范围是本机应用或所选机器的 Agent
+            请求，不是系统全局 VPN。
+          </p>
+        </section>
+
+        <section
+          id="faq"
+          class="docs-section docs-faq"
+          aria-labelledby="faq-title"
+        >
+          <p class="docs-section-number">10 / HELP</p>
+          <h2 id="faq-title">常见问题</h2>
+          <details>
+            <summary>SSH 已保存，为什么仍然无法连接？</summary>
+            <p>
+              保存成功只表示配置已记录。使用“连接并打开终端”检查真实连接，再依次核对网络、主机地址、端口、用户名、指纹和认证凭据。
+            </p>
+          </details>
+          <details>
+            <summary>模型“验证连接”成功，为什么发送消息仍然报错？</summary>
+            <p>
+              验证仅检查模型列表，不代表所有模型都有推理权限或剩余额度。核对所选服务和模型、账号额度、服务地址，以及当前执行设备的网络；按会话中的具体错误处理。
+            </p>
+          </details>
+          <details>
+            <summary>Codex 已登录，为什么远程项目不能使用？</summary>
+            <p>
+              登录默认只开放手机全局会话。到“设置 → 模型服务 → OpenAI
+              Codex”的“使用范围”，勾选项目所在的 SSH
+              机器，再“保存使用范围”。若提示登录过期或刷新失败，检查网络后重新登录。
+            </p>
+          </details>
+          <details>
+            <summary>为什么有的模型在手机上不可选？</summary>
+            <p>
+              手机 Agent
+              与远端运行环境支持范围不同。请使用当前手机会话中可选的服务；需要远程能力时，选择已配置的
+              SSH 项目。
+            </p>
+          </details>
+          <details>
+            <summary>想换一台机器或更换项目目录，怎么操作？</summary>
+            <p>
+              新建一个项目并绑定新的机器与目录。已有项目的执行位置固定，原会话历史保留；不会把旧会话直接切换到另一份代码上。
+            </p>
+          </details>
+          <details>
+            <summary>切到后台后，任务还会继续吗？</summary>
+            <p>
+              远程 Agent
+              任务可在手机连接断开后继续；手机全局任务受系统后台额度限制，可能保存进度并暂停，返回后恢复。交互式终端是另一种连接，断开时命令可能中断。
+            </p>
+          </details>
+          <details>
+            <summary>官网演示就是应用截图吗？</summary>
+            <p>
+              官网标为“实机截图”的模型服务页与展开设置页来自真实折叠屏开发版本；标为“布局示意”的四种形态展示用于解释适配逻辑，不是实机截图。实际功能、状态和外观以应用为准。
+            </p>
+          </details>
+          <details>
+            <summary>如何反馈文档问题？</summary>
+            <p>
+              可在<a
+                href="https://github.com/Nervlet/agentgo-website/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+                >官网仓库 Issues<span class="sr-only"
+                  >（在新标签页打开）</span
+                ></a
+              >反馈页面或文档问题。说明遇到问题的步骤、设备形态与应用版本；公开内容中请去掉密码、API
+              Key、设备码及私人主机信息。
+            </p>
+          </details>
+        </section>
+        <footer class="docs-content-footer">
+          <p>文档会随应用更新。查看最新获取方式与产品介绍。</p>
+          <a href="../">返回 AgentGo 官网 <span aria-hidden="true">↗</span></a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
