@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f8fb" />
+    <meta
+      name="description"
+      content="AgentGo，面向 HarmonyOS 手机与折叠屏的 SSH 和 Coding Agent 工作台。连接远程机器，在对话、代码与终端之间继续你的项目。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AgentGo — 把开发现场，带在身边。" />
+    <meta
+      property="og:description"
+      content="面向 HarmonyOS 手机与折叠屏的 SSH 和 Coding Agent 工作台。"
+    />
+    <meta property="og:locale" content="zh_CN" />
+    <title>AgentGo — 把开发现场，带在身边。</title>
+    <link rel="icon" type="image/png" href="./assets/agentgo-mark.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至主要内容</a>
+    <header class="site-header">
+      <div class="nav-shell container">
+        <a class="brand" href="#" aria-label="AgentGo 首页"
+          ><img
+            src="./assets/agentgo-mark.png"
+            alt=""
+            width="36"
+            height="36"
+          /><span>AgentGo<span class="brand-period">.</span></span></a
+        >
+        <nav aria-label="主导航" class="desktop-nav">
+          <a href="#workspace">工作台</a><a href="#anywhere">随处继续</a
+          ><a href="#control">安全与控制</a>
+        </nav>
+        <a
+          class="nav-github"
+          href="https://github.com/Nervlet/agentgo-website"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub <span aria-hidden="true">↗</span
+          ><span class="sr-only">（在新标签页打开官网源码）</span></a
+        >
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-line"></span> <span>BUILT FOR HARMONYOS</span>
+          <span class="eyebrow-divider">/</span> <span>手机 · 折叠屏</span>
+        </div>
+        <h1 id="hero-title">把开发现场，<br /><span>带在身边。</span></h1>
+        <p class="hero-copy">
+          SSH、Coding Agent、代码工作台。<br
+            class="mobile-break"
+          />连接你的远程机器，<br
+            class="desktop-break"
+          />让手中的项目，随你继续。
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#workspace"
+            >探索工作台 <span aria-hidden="true">↓</span></a
+          ><a class="button button-quiet" href="#get-agentgo"
+            >了解获取方式 <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="hero-footnote">
+          <span>鸿蒙原生体验</span><span>自选模型服务</span
+          ><span>真实远程环境</span>
+        </div>
+      </section>
+
+      <section
+        id="workspace"
+        class="workspace-section container"
+        aria-label="AgentGo 工作台功能演示"
+      >
+        <div class="workspace-intro">
+          <span
+            ><span class="tiny-cross" aria-hidden="true">+</span> YOUR
+            WORKSPACE, WITH YOU.</span
+          ><span class="demo-label"
+            >交互演示 <span aria-hidden="true">↙</span></span
+          >
+        </div>
+        <div class="workbench">
+          <div class="workbench-bar">
+            <div class="workbench-wordmark">
+              <img
+                src="./assets/agentgo-mark.png"
+                width="23"
+                height="23"
+                alt=""
+              /><strong>AgentGo</strong
+              ><span class="workbench-bar-divider"></span><span>工作空间</span>
+            </div>
+            <span class="sample-status"><span></span> 示例连接</span>
+          </div>
+          <div class="workbench-content">
+            <aside class="demo-sidebar" aria-label="示例项目目录">
+              <div class="sidebar-caption">
+                工作空间 <span aria-hidden="true">＋</span>
+              </div>
+              <div class="machine-name">
+                <span class="machine-symbol" aria-hidden="true">⌘</span>
+                我的开发机
+                <span class="subtle-chevron" aria-hidden="true">⌄</span>
+              </div>
+              <div class="sample-project">
+                <span aria-hidden="true">▱</span> hello-world
+              </div>
+              <div class="sample-session active-session">
+                <span aria-hidden="true">◌</span> 给首页加上深色模式
+              </div>
+              <div class="sample-session">
+                <span aria-hidden="true">◌</span> 整理项目结构
+              </div>
+              <div class="sample-project second-project">
+                <span aria-hidden="true">▱</span> personal-blog
+              </div>
+              <div class="sidebar-bottom">
+                <span aria-hidden="true">✧</span> 全局助手
+                <span class="sidebar-bottom-label">手机端</span>
+              </div>
+            </aside>
+            <div class="demo-main">
+              <div class="demo-toolbar">
+                <div class="project-breadcrumb">
+                  hello-world <span>/</span>
+                  <span class="branch-name">⑂ main</span>
+                </div>
+                <div
+                  class="demo-tabs"
+                  role="tablist"
+                  aria-label="切换工作台示意"
+                >
+                  <button
+                    id="tab-agent"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="panel-agent"
+                    tabindex="0"
+                    data-tab="agent"
+                  >
+                    Agent</button
+                  ><button
+                    id="tab-diff"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="panel-diff"
+                    tabindex="-1"
+                    data-tab="diff"
+                  >
+                    代码 Diff</button
+                  ><button
+                    id="tab-terminal"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="panel-terminal"
+                    tabindex="-1"
+                    data-tab="terminal"
+                  >
+                    终端
+                  </button>
+                </div>
+              </div>
+              <section
+                id="panel-agent"
+                class="demo-panel agent-panel"
+                role="tabpanel"
+                aria-labelledby="tab-agent"
+                tabindex="0"
+              >
+                <div class="user-message">
+                  给首页加上深色模式，跟随系统外观。
+                </div>
+                <div class="agent-answer">
+                  <div class="agent-avatar">
+                    <img
+                      src="./assets/agentgo-mark.png"
+                      width="28"
+                      height="28"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="agent-name">AgentGo <span>项目会话</span></div>
+                    <p>
+                      我会先检查页面样式，再补充深色模式。<br />修改将保持现有布局和交互。
+                    </p>
+                  </div>
+                </div>
+                <div class="tool-trace">
+                  <div>
+                    <span class="trace-check" aria-hidden="true">✓</span
+                    ><span>读取页面与主题配置</span><code>src/styles.css</code>
+                  </div>
+                  <div>
+                    <span class="trace-check" aria-hidden="true">✓</span
+                    ><span>添加系统外观适配</span
+                    ><span class="diff-summary">+ 13 <span>− 2</span></span>
+                  </div>
+                </div>
+                <div class="agent-completion">
+                  <span class="completion-line"></span>
+                  <p>
+                    已补充深色主题样式。<br /><span
+                      >你可以切换到「代码 Diff」查看这次修改。</span
+                    >
+                  </p>
+                  <button
+                    class="inline-action"
+                    type="button"
+                    data-show-tab="diff"
+                  >
+                    查看改动 <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+                <div class="demo-composer">
+                  <span>继续描述你的想法…</span
+                  ><span class="composer-hint">交互示意</span
+                  ><span class="composer-send" aria-hidden="true">↑</span>
+                </div>
+              </section>
+              <section
+                id="panel-diff"
+                class="demo-panel diff-panel"
+                role="tabpanel"
+                aria-labelledby="tab-diff"
+                tabindex="0"
+                hidden
+              >
+                <div class="code-file-heading">
+                  <span>src/styles.css</span
+                  ><span class="diff-summary">+ 13 <span>− 2</span></span>
+                </div>
+                <div class="code-diff" aria-label="CSS 修改示例">
+                  <div class="code-row">
+                    <span>1</span><code> :root {</code>
+                  </div>
+                  <div class="code-row removed">
+                    <span>2</span><code>− background: #ffffff;</code>
+                  </div>
+                  <div class="code-row removed">
+                    <span>3</span><code>− color: #18202c;</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>2</span><code>+ color-scheme: light dark;</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>3</span><code>+ --surface: #ffffff;</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>4</span><code>+ --text: #18202c;</code>
+                  </div>
+                  <div class="code-row"><span>5</span><code> }</code></div>
+                  <div class="code-row added">
+                    <span>6</span><code>+ body {</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>7</span><code>+ background: var(--surface);</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>8</span><code>+ color: var(--text);</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>9</span><code>+ }</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>10</span
+                    ><code>+ @media (prefers-color-scheme: dark) {</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>11</span><code>+ :root {</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>12</span><code>+ --surface: #10141c;</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>13</span><code>+ --text: #e8edf4;</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>14</span><code>+ }</code>
+                  </div>
+                  <div class="code-row added">
+                    <span>15</span><code>+ }</code>
+                  </div>
+                </div>
+                <div class="panel-bottom-note">
+                  每一处改动，都有迹可循。<span>示例内容，未修改真实文件</span>
+                </div>
+              </section>
+              <section
+                id="panel-terminal"
+                class="demo-panel terminal-panel"
+                role="tabpanel"
+                aria-labelledby="tab-terminal"
+                tabindex="0"
+                hidden
+              >
+                <div class="terminal-heading">
+                  <span>zsh <span>— hello-world</span></span
+                  ><span class="terminal-example">终端输出示意</span>
+                </div>
+                <div class="terminal-output">
+                  <p>
+                    <span class="terminal-path">~/hello-world</span>
+                    <span class="terminal-branch">main</span>
+                  </p>
+                  <p><span class="terminal-prompt">❯</span> git diff --stat</p>
+                  <p class="terminal-muted">
+                    src/styles.css | 15 +++++++++++++--
+                  </p>
+                  <p class="terminal-muted">
+                    1 file changed, 13 insertions(+), 2 deletions(-)
+                  </p>
+                  <p class="terminal-gap">
+                    <span class="terminal-prompt">❯</span> npm run build
+                  </p>
+                  <p class="terminal-muted">
+                    &gt; hello-world@1.0.0 build<br />&gt; vite build
+                  </p>
+                  <p class="terminal-success">✓ built successfully</p>
+                  <p class="terminal-gap">
+                    <span class="terminal-prompt">❯</span>
+                    <span class="terminal-caret" aria-hidden="true"></span>
+                  </p>
+                </div>
+                <div class="terminal-footer">
+                  需要亲手操作时，终端就在旁边。<span>此演示不执行命令</span>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="workspace-caption">
+          <span>从一个想法，到一次改动。</span>
+          <p>
+            切换 Agent / 代码 Diff / 终端体验工作流。界面为功能示意，非 App
+            截图，不连接真实服务。
+          </p>
+        </div>
+        <noscript
+          ><p class="noscript-note">
+            工作台切换演示需要 JavaScript；下方仍可阅读全部产品介绍。
+          </p></noscript
+        >
+      </section>
+
+      <section
+        class="capabilities-section container"
+        aria-labelledby="capabilities-title"
+      >
+        <div class="section-heading">
+          <p class="eyebrow">ONE WORKSPACE. LESS FRICTION.</p>
+          <h2 id="capabilities-title">
+            想法、代码、命令。<br />在同一处接上。
+          </h2>
+          <p class="section-description">
+            把远程开发中常用的几件事，<br />放进一个随手可用的工作台。
+          </p>
+        </div>
+        <div class="capability-grid">
+          <article>
+            <div class="feature-number">01 <span>CODING AGENT</span></div>
+            <h3>让想法进入项目</h3>
+            <p>
+              在远程项目目录发起任务，跟随对话查看工具执行过程与文件改动。支持会话分叉、上下文压缩与项目
+              Skills。
+            </p>
+          </article>
+          <article>
+            <div class="feature-number">02 <span>CODE WORKSPACE</span></div>
+            <h3>看清每一处变化</h3>
+            <p>
+              浏览真实远程文件、检查代码 Diff、查看 Git
+              历史。让任务进展与代码变化，在一个工作台里对应起来。
+            </p>
+          </article>
+          <article>
+            <div class="feature-number">03 <span>SSH TERMINAL</span></div>
+            <h3>保留亲手操作的自由</h3>
+            <p>
+              打开交互式 SSH
+              终端，用熟悉的命令继续工作。终端标签、快捷键与独立字体设置，照顾每一次输入。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="anywhere"
+        class="anywhere-section"
+        aria-labelledby="anywhere-title"
+      >
+        <div class="container anywhere-layout">
+          <div class="anywhere-copy">
+            <p class="eyebrow">SMALL SCREEN. REAL WORK.</p>
+            <h2 id="anywhere-title">屏幕有大小。<br />工作，不必断开。</h2>
+            <p>
+              在手机上专注当前任务，展开折叠屏，就有更宽的工作空间。布局随可用宽度调整，当前会话、表单与
+              SSH 连接保持延续。
+            </p>
+            <div class="anywhere-detail">
+              <span aria-hidden="true">↔</span>
+              <div>
+                <strong>为展开，也为折起。</strong>
+                <p>
+                  宽屏左右分栏，窄屏逐级进入。<br />从查看进展到检查细节，自然切换。
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="continuity-panel">
+            <div class="continuity-top">
+              <span>工作始终有序</span><span aria-hidden="true">⌘</span>
+            </div>
+            <div class="hierarchy-row">
+              <span class="hierarchy-index">01</span>
+              <div>
+                <h3>机器</h3>
+                <p>连接你的远程环境</p>
+              </div>
+              <span class="hierarchy-example">我的开发机</span>
+            </div>
+            <div class="hierarchy-row">
+              <span class="hierarchy-index">02</span>
+              <div>
+                <h3>项目</h3>
+                <p>一台机器，一个目录</p>
+              </div>
+              <span class="hierarchy-example">hello-world</span>
+            </div>
+            <div class="hierarchy-row">
+              <span class="hierarchy-index">03</span>
+              <div>
+                <h3>会话</h3>
+                <p>每项工作，都有上下文</p>
+              </div>
+              <span class="hierarchy-example">深色模式</span>
+            </div>
+            <div class="continuity-bottom">
+              <span>置顶常用会话</span><span>归档与恢复</span
+              ><span>继续手中的工作</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="control"
+        class="control-section container"
+        aria-labelledby="control-title"
+      >
+        <div class="section-heading control-heading">
+          <div>
+            <p class="eyebrow">YOUR TOOLS. YOUR CONTROL.</p>
+            <h2 id="control-title">工具随身。<br />选择在你。</h2>
+          </div>
+          <p class="section-description">
+            连接哪台机器，使用哪个模型，<br />授予哪些权限，都有清楚的边界。
+          </p>
+        </div>
+        <div class="control-grid">
+          <article>
+            <div class="control-icon" aria-hidden="true">⌘</div>
+            <h3>连接你自己的机器</h3>
+            <p>
+              通过 SSH
+              进入熟悉的开发环境。首次连接或主机指纹变化时，需要你确认。
+            </p>
+          </article>
+          <article>
+            <div class="control-icon" aria-hidden="true">✳</div>
+            <h3>选择你的模型服务</h3>
+            <p>
+              配置支持的 API Key 服务，或使用 OpenAI Codex
+              设备码登录，并按机器管理授权。
+            </p>
+          </article>
+          <article>
+            <div class="control-icon" aria-hidden="true">⊡</div>
+            <h3>认真对待每份凭据</h3>
+            <p>
+              凭据使用系统 HUKS
+              加密保存。离开应用后自动锁定凭据访问，已有连接可继续。
+            </p>
+          </article>
+        </div>
+        <p class="privacy-note">
+          模型请求由你选择的模型服务处理；使用时请同时了解对应服务的数据政策。
+        </p>
+      </section>
+
+      <section class="faq-section container" aria-labelledby="faq-title">
+        <div>
+          <p class="eyebrow">GOOD TO KNOW</p>
+          <h2 id="faq-title">开始之前，<br />你可能想了解。</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>
+              AgentGo 支持哪些设备？<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              AgentGo 面向 HarmonyOS 手机与折叠屏开发。当前工程目标为 HarmonyOS
+              6.1，最低 API 12；具体安装要求以未来公开发行说明为准。远程 Agent
+              运行包目前支持 macOS ARM64 和 Linux x64。
+            </p>
+          </details>
+          <details>
+            <summary>
+              离开手机后，任务还能继续吗？<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              远程 Agent
+              任务可以在手机断开后继续执行。手机本地助手受系统后台运行额度限制，回到前台后会尝试恢复未完成任务。普通交互式终端与远程
+              Agent 任务不同，不能保证断开后继续运行。
+            </p>
+          </details>
+          <details>
+            <summary>
+              需要自己准备模型服务吗？<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              需要配置受支持的模型账号或 API Key，也可以使用 OpenAI Codex
+              设备码登录。模型可用范围取决于运行环境和服务支持情况；模型服务可能产生独立费用，具体以服务商为准。
+            </p>
+          </details>
+          <details>
+            <summary>
+              AgentGo 是开源应用吗？<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              目前公开的是这份官网的源码，采用 MIT
+              许可证。应用本体的源码和发行许可独立管理；官网开源不代表应用本体开源。品牌图标保留其品牌权利。
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section
+        id="get-agentgo"
+        class="get-section container"
+        aria-labelledby="get-title"
+      >
+        <div class="get-surface">
+          <div>
+            <p class="eyebrow">TAKE YOUR WORK WITH YOU.</p>
+            <h2 id="get-title">下一次灵感，<br />不必等回到桌前。</h2>
+            <p>AgentGo · 为随时继续的开发而打造。</p>
+          </div>
+          <div class="get-action">
+            <span class="release-tag">发布信息</span>
+            <p>公开下载入口尚未提供。<br />后续获取方式将在此更新。</p>
+            <a
+              class="button button-dark"
+              href="https://github.com/Nervlet/agentgo-website"
+              target="_blank"
+              rel="noopener noreferrer"
+              >关注官网项目 <span aria-hidden="true">↗</span
+              ><span class="sr-only">（在新标签页打开 GitHub）</span></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer container">
+      <div class="footer-top">
+        <a class="brand" href="#"
+          ><img
+            src="./assets/agentgo-mark.png"
+            alt=""
+            width="30"
+            height="30"
+          /><span>AgentGo<span class="brand-period">.</span></span></a
+        >
+        <p>你的开发现场，随你同行。</p>
+        <div class="footer-links">
+          <a
+            href="https://github.com/Nervlet/agentgo-website"
+            target="_blank"
+            rel="noopener noreferrer"
+            >官网源码 ↗<span class="sr-only">（新标签页）</span></a
+          ><a
+            href="https://github.com/Nervlet/agentgo-website/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            >反馈建议 ↗<span class="sr-only">（新标签页）</span></a
+          >
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Nervlet. 官网代码以 MIT 许可开源。</span
+        ><span>DESIGNED FOR WORK IN MOTION.</span>
+      </div>
+    </footer>
+  </body>
+</html>

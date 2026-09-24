@@ -1,0 +1,16 @@
+{
+  "name": "agentgo-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The official product website for AgentGo, a HarmonyOS SSH and Coding Agent workspace.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node --check app.js && node --check scripts/build.mjs && node --check scripts/serve.mjs"
+  }
+}
