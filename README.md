@@ -33,6 +33,7 @@ GitHub Pages 通过 `.github/workflows/pages.yml` 从 `main` 自动构建和部�
 
 - `index.html`：中文文案、导航、实机画面、多设备说明与 FAQ。
 - `privacy.html`、`membership.html`：应用隐私政策、会员服务协议及公开联系渠道；应用行为或运营安排变化时同步维护。
+- `support.html`、`support.css`、`support.js`：问题反馈、投诉举报和个人信息请求的邮箱入口及处理流程；邮件由用户确认发送，不在网页收集或上传内容。
 - `styles.css`：品牌配色、响应式布局、可访问性与动效偏好。
 - `adaptive.css`：多设备适配展示与实机截图布局。
 - `app.js`：手机、折叠屏、平板与二合一布局示意切换。
