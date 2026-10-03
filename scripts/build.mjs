@@ -8,6 +8,8 @@ await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 for (const file of [
   "index.html",
+  "privacy.html",
+  "membership.html",
   "styles.css",
   "adaptive.css",
   "app.js",

@@ -16,6 +16,8 @@ const types = {
 };
 const publicFiles = new Set([
   "index.html",
+  "privacy.html",
+  "membership.html",
   "styles.css",
   "adaptive.css",
   "app.js",
